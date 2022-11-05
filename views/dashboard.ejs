@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>~ Ejs Task App ~</title>
+  </head>
+  <body>
+    <div class="header-outline">
+      <header>
+        <h1 style="--i: 1" class="h1-one">
+          Build
+          <!-- <span style="--i: 1" class="h1-span-build">B</span>
+        <span style="--i: 2" class="h1-span-build">u</span>
+        <span style="--i: 3" class="h1-span-build">i</span>
+        <span style="--i: 4" class="h1-span-build">l</span>
+        <span style="--i: 5" class="h1-span-build">d</span> -->
+        </h1>
+        <h1 style="--i: 2" class="h1-two">To</h1>
+        <h1 style="--i: 3" class="h1-three">
+          Greatness
+          <!-- <span style="--i: 1" class="h1-greatness">G</span>
+        <span style="--i: 2" class="h1-greatness">R</span>
+        <span style="--i: 3" class="h1-greatness">E</span>
+        <span style="--i: 4" class="h1-greatness">A</span>
+        <span style="--i: 5" class="h1-greatness">T</span>
+        <span style="--i: 6" class="h1-greatness">N</span>
+        <span style="--i: 7" class="h1-greatness">E</span>
+        <span style="--i: 8" class="h1-greatness">S</span>
+        <span style="--i: 9" class="h1-greatness">S</span> -->
+        </h1>
+      </header>
+    </div>
+    <div class="add-post-container">
+      <form action="/addtask" method="POST">
+        <div class="top-form-row">
+          <div class="form-div">
+            <label for="postedBy">PostedBy:</label>
+            <input
+              type="text"
+              class="author-input"
+              name="postedBy"
+              placeholder="Anonymous..."
+              autocomplete="off"
+            />
+          </div>
+          <div class="form-div">
+            <button type="submit" class="post-btn">Add Task</button>
+          </div>
+        </div>
+
+        <div class="form-div">
+          <textarea
+            name="post"
+            id="post"
+            cols="30"
+            rows="10"
+            class="post-input"
+            resize="none"
+            placeholder="Add a task..."
+          ></textarea>
+        </div>
+      </form>
+    </div>
+
+    <div class="posts-container">
+      <% posts.forEach(p=>{ %>
+      <li class="post-item">
+        <div class="info-row">
+          <h5 class="info-postedby"><%=p.postedBy%></h5>
+          <small><%=p.createdAt%></small>
+        </div>
+        <div class="post-body">
+          <p><%=p.post%></p>
+        </div>
+        <div class="bottom-row">
+          <h5>Likes:<%=p.likes%></h5>
+          <h4>Comments:<%=p.comments.length%></h4>
+        </div>
+      </li>
+      <% }) %>
+    </div>
+
+    <footer>
+      <strong>Footer&copy;</strong>
+    </footer>
+  </body>
+</html>
